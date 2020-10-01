@@ -27,7 +27,7 @@ export default {
         Pdf: 'cloud_upload',
         Exit: 'exit_to_app',
       },
-      brandName: 'BRIKEV',
+      brandName: 'TPV APP',
     };
   },
 

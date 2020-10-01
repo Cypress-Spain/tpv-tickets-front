@@ -44,3 +44,12 @@ export const deleteTicket = id => axios.delete(`${TPV_APP_API_URL}/tickets/${id}
     Authorization: getToken(),
   },
 });
+
+export const upload = body => url => axios.post(`${TPV_APP_API_URL}${url}`,
+  body,
+  {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: getToken(),
+    },
+  });

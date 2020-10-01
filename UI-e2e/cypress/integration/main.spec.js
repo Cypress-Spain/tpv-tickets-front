@@ -12,7 +12,7 @@ describe('Main view', () => {
 
   it('Main view should content the navbar', () => {
     cy.get('nav').should('be.visible');
-    cy.contains('nav', 'BRIKEV');
+    cy.contains('nav', 'TPV APP');
   });
 
   it(`The table should have a total of ${3} pdfs`, () => {
@@ -78,5 +78,20 @@ describe('Main view', () => {
     cy.get('[data-cy=deleteBtn-31]').click();
     cy.get('.deleteBtn').click();
     cy.get('.error').should('be.visible');
+  });
+
+  it('Should upload a photo correctly', () => {
+    const file = '../fixtures/file.json';
+    const fileName = 'file.json';
+    cy.route('POST', '/api/v1/ticket/ocr', 'fixture:uploadedPhoto').as('uploadedPhoto');
+    cy.fixture(file).then((fileContent) => {
+      cy.get('.file').upload({
+        fileContent,
+        fileName,
+        mimeType: 'application/json',
+      });
+    });
+    cy.get('[data-cy=main-date-input]').should('have.value', '12-12-2020');
+    cy.get('[data-cy=main-price-input]').should('have.value', '19,00');
   });
 });

@@ -36,12 +36,20 @@
         >
           {{ $t('error.priceFormat') }}
         </div>
-      <BkButton
-        :disabled="loading"
-        :isLoading="loading"
-      >
-        {{ $t('ticketForm.button') }}
-      </BkButton>
+        <div class="btns-container">
+          <BkButton
+            class="submit-button"
+            :disabled="loading"
+            :isLoading="loading"
+          >
+            {{ $t('ticketForm.button') }}
+          </BkButton>
+          <BkDropzone
+            :disabled="loading"
+            :isLoading="loading"
+            @onUpload="handleUpload"
+          />
+        </div>
     </form>
     <div class="tickets-container">
       <h3>{{ $t('table.title') }}</h3>
@@ -128,11 +136,11 @@ export default {
       const { date, price } = this.ticket;
       if (!this.$v.$invalid) {
         this.setLoading(true);
-        this.updateTicket({
-          date,
-          price,
-        });
+        this.updateTicket({ date, price });
       }
+    },
+    handleUpload(data) {
+      this.ticket = data;
     },
     handleClickDeleteIcon(id) {
       this.ticketId = id;
@@ -159,6 +167,14 @@ export default {
       text-align: center;
       font-size: $fs-h3;
       line-height: $base-line-height;
+    }
+  }
+  .btns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .submit-button {
+      width: 75%;
     }
   }
   .form-container {
