@@ -2,6 +2,9 @@
   "name": "tpv-tickets-front",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.4"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
