@@ -28,14 +28,20 @@ exports[`BkPdfLoader component Should be render correctly 1`] = `
     />
   </div>
    
-  <bkbutton
-    class="btn"
+  <button
+    class="btn btn"
     data-cy="btn-pdf-loader"
     type="submit"
   >
-    
+    <!---->
+     
+    <p
+      class="content"
+    >
+      
       
   
-  </bkbutton>
+    </p>
+  </button>
 </form>
 `;

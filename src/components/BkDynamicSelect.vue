@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
 import Main from '@/views/Main.vue';
 import Pdf from '@/views/Pdf.vue';
 
@@ -38,9 +39,13 @@ export default {
   },
 
   props: {
-    tabs: Array,
-    tabsText: Object,
-    currentTab: String,
+    tabs: VueTypes.array,
+    tabsText: VueTypes.objectOf(VueTypes.shape({
+      Main: VueTypes.string,
+      Pdf: VueTypes.string,
+      Exit: VueTypes.string,
+    })),
+    currentTab: VueTypes.string,
   },
 
   methods: {

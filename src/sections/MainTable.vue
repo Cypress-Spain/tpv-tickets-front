@@ -34,11 +34,15 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
+
+const WITHOUT_PDF_TEXT = 'Tickets sin pdf';
+
 export default {
   name: 'MainTable',
 
   props: {
-    data: Array,
+    data: VueTypes.array,
   },
   data() {
     return {
@@ -50,8 +54,8 @@ export default {
       this.$emit('onDelete', id);
     },
     withoutPdf(name) {
-      if (name === 'Tickets sin pdf') this.hasNoPdf = true;
-      return name === 'Tickets sin pdf';
+      if (name === WITHOUT_PDF_TEXT) this.hasNoPdf = true;
+      return name === WITHOUT_PDF_TEXT;
     },
   },
 };

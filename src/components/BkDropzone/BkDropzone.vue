@@ -1,6 +1,6 @@
 <template>
   <div class="bk-dropzone">
-    <label class="" for="file">
+    <label for="file">
       <span class="icon material-icons">
         {{ icon }}
       </span>
@@ -15,23 +15,15 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
 import { upload } from '@/api';
 
 export default {
   name: 'BkDropzone',
   props: {
-    endpoint: {
-      type: String,
-      default: '/ticket/ocr',
-    },
-    loading: {
-      type: Boolean,
-      default: false,
-    },
-    icon: {
-      type: String,
-      default: 'camera_enhance',
-    },
+    endpoint: VueTypes.string.def('/ticket/ocr'),
+    loading: VueTypes.bool.def(false),
+    icon: VueTypes.string.def('camera_enhance'),
   },
   methods: {
     uploadFile(evt) {

@@ -8,7 +8,10 @@
           </div>
           <div class="modal-footer">
             <slot name="footer">
-              <button class="modal-default-button" @click="$emit('close')">
+              <button
+                class="modal-default-button"
+                @click="$emit('close')"
+              >
                 OK
               </button>
             </slot>
@@ -50,7 +53,7 @@ $shadow: calculateRem(-1px) calculateRem(0px) calculateRem(7px) calculateRem(-4p
   width: calculateRem(300px);
   margin: 0 auto;
   padding: calculateRem(20px) calculateRem(30px);
-  background-color: #fff;
+  background-color: $white;
   border-radius: calculateRem(2px);
   box-shadow: $shadow;
   transition: all .3s ease;

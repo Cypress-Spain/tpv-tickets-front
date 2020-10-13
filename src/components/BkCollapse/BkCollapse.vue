@@ -21,14 +21,13 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
+
 export default {
   name: 'BkCollapse',
   props: {
-    isOpened: {
-      type: Boolean,
-      value: false,
-    },
-    title: String,
+    isOpened: VueTypes.bool.def(false),
+    title: VueTypes.string,
   },
   data() {
     return {

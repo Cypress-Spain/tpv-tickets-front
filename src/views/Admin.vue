@@ -1,6 +1,6 @@
 <template>
   <div class="admin">
-    <BkHeader :title="brandName"/>
+    <BkHeader :title="$t('admin.title')"/>
     <bk-dynamic-select
       :currentTab="currentTab"
       :tabs="tabs"
@@ -21,16 +21,16 @@ export default {
   data() {
     return {
       currentTab: 'Main',
-      tabs: ['Main', 'Pdf', 'Exit'],
-      tabsText: {
-        Main: 'home',
-        Pdf: 'cloud_upload',
-        Exit: 'exit_to_app',
-      },
-      brandName: 'TPV APP',
     };
   },
-
+  beforeMount() {
+    this.tabsText = {
+      Main: 'home',
+      Pdf: 'cloud_upload',
+      Exit: 'exit_to_app',
+    };
+    this.tabs = ['Main', 'Pdf', 'Exit'];
+  },
   methods: {
     changesHandler(selected) {
       if (selected.includes('Exit')) {

@@ -31,13 +31,12 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
+
 export default {
   name: 'MainModal',
   props: {
-    opened: {
-      type: Boolean,
-      default: false,
-    },
+    opened: VueTypes.bool.def(false),
   },
   methods: {
     close() {

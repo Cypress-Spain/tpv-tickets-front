@@ -11,23 +11,30 @@
       :class="color"
       @input="$emit('input', $event.target.value)"
     />
-    <label :for="id" :class="color">{{ label }}</label>
+    <label
+      :for="id"
+      :class="color"
+    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
 <script>
+import VueTypes from 'vue-types';
+
 export default {
   name: 'BkInput',
   props: {
-    dataCy: String,
-    value: String,
-    name: String,
-    type: String,
-    label: String,
-    placeholder: String,
-    required: Boolean,
-    color: String,
-    id: String,
+    dataCy: VueTypes.string,
+    value: VueTypes.string,
+    name: VueTypes.string,
+    type: VueTypes.string,
+    label: VueTypes.string,
+    placeholder: VueTypes.string,
+    required: VueTypes.bool.def(false),
+    color: VueTypes.string,
+    id: VueTypes.string,
   },
 };
 </script>

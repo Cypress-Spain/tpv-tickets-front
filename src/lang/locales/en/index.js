@@ -5,6 +5,9 @@ export default {
     passwordLabel: 'Password',
     button: 'Login',
   },
+  admin: {
+    title: 'TPV APP',
+  },
   ticketForm: {
     title: 'Validate your ticket',
     price: 'Price',

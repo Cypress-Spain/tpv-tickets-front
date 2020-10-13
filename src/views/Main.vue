@@ -99,7 +99,6 @@ export default {
       },
       isOpened: false,
       showModal: false,
-      collapsibleItems: [],
     };
   },
 

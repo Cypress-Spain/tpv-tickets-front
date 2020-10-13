@@ -4,13 +4,15 @@
       <label for="file">
         <span
           data-cy="select-pdf"
-          v-if="!selectedName">
+          v-if="!selectedName"
+        >
             {{ title }}
         </span>
         <span
           data-cy="file-name"
-          v-else>
-            {{ selectedName }}
+          v-else
+        >
+          {{ selectedName }}
         </span>
       </label>
       <input
@@ -35,6 +37,7 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
 
 export default {
   name: 'BkPdfLoader',
@@ -47,9 +50,9 @@ export default {
   },
 
   props: {
-    loading: Boolean,
-    title: String,
-    btnText: String,
+    loading: VueTypes.bool.def(false),
+    title: VueTypes.string,
+    btnText: VueTypes.string,
   },
 
   methods: {
