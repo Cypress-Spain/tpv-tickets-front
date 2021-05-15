@@ -59,6 +59,7 @@
         :key="dataTable.length">
           <BkCollapse
             :title="title"
+            :price="totalPrice(dataTable)"
             :isOpened="isOpened"
           >
             <MainTable
@@ -82,7 +83,7 @@ import {
   mapGetters, mapActions, mapMutations,
 } from 'vuex';
 import { required, maxLength } from 'vuelidate/lib/validators';
-import { priceFormat, dateFormat } from '@/utils';
+import { priceFormat, dateFormat, sumPrices } from '@/utils';
 import { MainModal, MainTable } from '../sections';
 
 export default {
@@ -131,6 +132,9 @@ export default {
     ...mapMutations({
       setLoading: 'SET_LOADING',
     }),
+    totalPrice(tickets) {
+      return sumPrices(tickets);
+    },
     send() {
       const { date, price } = this.ticket;
       if (!this.$v.$invalid) {

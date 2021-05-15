@@ -6,7 +6,10 @@
         class="header"
         @click="toggleCardState">
           <p class="title" name="header">{{ title }}</p>
-          <i class="material-icons icon">keyboard_arrow_down</i>
+          <div class="arrow-container">
+            <span data-cy="price-info" v-if="price !== 0">{{ price }}</span>
+            <i class="material-icons icon">keyboard_arrow_down</i>
+          </div>
       </div>
       <transition
         name="fade"
@@ -28,6 +31,7 @@ export default {
   props: {
     isOpened: VueTypes.bool.def(false),
     title: VueTypes.string,
+    price: VueTypes.number.def(0),
   },
   data() {
     return {
@@ -65,6 +69,10 @@ $shadow: calculateRem(-1px) calculateRem(0px) calculateRem(7px) calculateRem(-4p
   cursor: pointer;
   icon: {
     transform: rotate(180deg);
+  }
+  .arrow-container {
+    display: flex;
+    align-items: center;
   }
 }
 .container.not-expanded {

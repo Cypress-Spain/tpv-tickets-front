@@ -17,6 +17,7 @@ describe('Main view', () => {
 
   it(`The table should have a total of ${3} pdfs`, () => {
     cy.get('.table-container').should('have.length', 3);
+    cy.get('[data-cy=price-info]').should('have.length', 3);
   });
 
   it('Testing the headers of the table', () => {
