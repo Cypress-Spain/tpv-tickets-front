@@ -63,12 +63,16 @@ $shadow: calculateRem(-1px) calculateRem(0px) calculateRem(7px) calculateRem(-4p
   background: $white;
 }
 .header {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   icon: {
     transform: rotate(180deg);
+  }
+  .title {
+    word-break: break-all;
+    padding-right: calculateRem(14px);
   }
   .arrow-container {
     display: flex;
