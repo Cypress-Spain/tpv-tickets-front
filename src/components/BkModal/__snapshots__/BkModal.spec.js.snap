@@ -17,15 +17,7 @@ exports[`BkModal component Should be render correctly 1`] = `
        
       <div
         class="modal-footer"
-      >
-        <button
-          class="modal-default-button"
-        >
-          
-              OK
-            
-        </button>
-      </div>
+      />
     </div>
   </div>
 </div>

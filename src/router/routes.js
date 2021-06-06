@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import storage from '../persistence';
 
-import Admin from '@/views/Admin.vue';
+import Main from '@/views/Main.vue';
 import Login from '@/views/Login.vue';
 
 Vue.use(Router);
@@ -23,7 +23,7 @@ const router = new Router({
     {
       path: '/',
       name: 'admin',
-      component: Admin,
+      component: Main,
     },
   ],
 });

@@ -16,7 +16,7 @@
 import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'Pdf',
+  name: 'UploaderSection',
   computed: {
     ...mapState(['upload']),
     ...mapGetters(['loading']),

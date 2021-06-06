@@ -1,7 +1,7 @@
 <template>
   <div
     class="container"
-    :class="{ 'not-expanded': !this.expanded }">
+    :class="{ 'not-expanded': !expanded }">
       <div
         class="header"
         @click="toggleCardState">
@@ -17,7 +17,7 @@
         <div
           class="content"
           v-if="expanded">
-            <slot></slot>
+            <slot />
         </div>
       </transition>
   </div>

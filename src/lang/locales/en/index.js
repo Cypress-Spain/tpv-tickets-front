@@ -45,5 +45,6 @@ export default {
     message: 'Are you sure you want to delete ticket?',
     btnDelete: 'Delete',
     btnCancel: 'Cancel',
+    btnOk: 'OK',
   },
 };

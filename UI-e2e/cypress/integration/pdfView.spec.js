@@ -7,7 +7,7 @@ describe('PDF view', () => {
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
     cy.wait('@loginRequest');
-    cy.get('[data-cy=Pdf-select]').click();
+    cy.get('[data-cy=UploaderSection-select]').click();
   });
 
   it('Pdf view render correctly', () => {

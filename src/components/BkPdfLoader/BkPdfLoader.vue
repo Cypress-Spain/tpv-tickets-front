@@ -6,7 +6,7 @@
           data-cy="select-pdf"
           v-if="!selectedName"
         >
-            {{ title }}
+          {{ title }}
         </span>
         <span
           data-cy="file-name"
@@ -31,7 +31,7 @@
       :disabled="loading"
       :isLoading="loading"
     >
-        {{ btnText }}
+      {{ btnText }}
     </BkButton>
   </form>
 </template>

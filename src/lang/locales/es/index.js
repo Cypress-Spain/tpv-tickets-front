@@ -42,5 +42,6 @@ export default {
     message: 'Seguro que quieres borrar este ticket?',
     btnDelete: 'Borrar',
     btnCancel: 'Cancelar',
+    btnOk: 'OK',
   },
 };

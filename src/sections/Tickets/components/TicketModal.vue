@@ -2,6 +2,7 @@
   <BkModal
     class="mainModal"
     v-if="opened"
+    :okText="$t('modal.btnOk')"
     @close="close"
   >
     <template #body>
@@ -15,14 +16,14 @@
     <template #footer>
       <BkButton
         class="deleteBtn"
-        @btn-clicked="handleDeleteClick"
+        @click="handleDeleteClick"
       >
         {{ $t('modal.btnDelete') }}
       </BkButton>
       <BkButton
         class="acceptBtn"
         outline
-        @btn-clicked="handleCancelClick"
+        @click="handleCancelClick"
       >
           {{ $t('modal.btnCancel') }}
       </BkButton>

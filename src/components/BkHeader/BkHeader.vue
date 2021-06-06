@@ -11,7 +11,6 @@ import VueTypes from 'vue-types';
 
 export default {
   name: 'BkHeader',
-
   props: {
     title: VueTypes.string.def(''),
   },

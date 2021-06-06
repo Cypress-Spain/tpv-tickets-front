@@ -64,8 +64,8 @@ export default {
         border-bottom: calculateRem(2px) solid $white;
       }
       &.secundary {
-        color: black;
-        border-bottom: calculateRem(2px) solid black;
+        color: $black;
+        border-bottom: calculateRem(2px) solid $black;
       }
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
@@ -91,7 +91,7 @@ export default {
         color: $white;
       }
       &.secundary {
-        color: black;
+        color: $black;
       }
     }
   }

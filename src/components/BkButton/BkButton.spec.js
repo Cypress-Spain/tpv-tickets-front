@@ -5,6 +5,7 @@ import localVue from '@/config/tests';
 describe('BkButton component', () => {
   const defaultConfig = {
     localVue,
+    okText: 'Test',
   };
   it('Should be render correctly', () => {
     const wrapper = mount(BkButton, defaultConfig);

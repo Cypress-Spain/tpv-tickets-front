@@ -4,7 +4,7 @@
     class="btn"
     :disabled="disabled"
 
-    @click="btnClicked">
+    @click="$emit('click')">
     <beat-loader :loading="isLoading" :color="'white'" :size="10" />
     <p class ="content" v-if="!isLoading">
       <slot></slot>
@@ -23,13 +23,6 @@ export default {
     disabled: VueTypes.bool.def(false),
     outline: VueTypes.bool.def(false),
   },
-
-  methods: {
-    btnClicked() {
-      this.$emit('btn-clicked');
-    },
-  },
-
 };
 </script>
 

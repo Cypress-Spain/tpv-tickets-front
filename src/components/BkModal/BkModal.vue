@@ -7,14 +7,7 @@
             <slot name="body" />
           </div>
           <div class="modal-footer">
-            <slot name="footer">
-              <button
-                class="modal-default-button"
-                @click="$emit('close')"
-              >
-                OK
-              </button>
-            </slot>
+            <slot name="footer" />
           </div>
         </div>
       </div>
@@ -23,8 +16,13 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types';
+
 export default {
   name: 'BkModal',
+  props: {
+    okText: VueTypes.string,
+  },
 };
 </script>
 
@@ -67,10 +65,6 @@ $shadow: calculateRem(-1px) calculateRem(0px) calculateRem(7px) calculateRem(-4p
 
 .modal-body {
   margin: calculateRem(20px) 0;
-}
-
-.modal-default-button {
-  float: right;
 }
 
 .modal-enter {

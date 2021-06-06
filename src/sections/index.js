@@ -1,2 +1,7 @@
-export { default as MainModal } from './MainModal.vue';
-export { default as MainTable } from './MainTable.vue';
+import TicketsSection from './Tickets/TicketsSection.vue';
+import UploaderSection from './Uploader/UploaderSection.vue';
+
+export default {
+  TicketsSection,
+  UploaderSection,
+};

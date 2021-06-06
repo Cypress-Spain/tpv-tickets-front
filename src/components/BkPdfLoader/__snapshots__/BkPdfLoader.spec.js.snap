@@ -14,7 +14,7 @@ exports[`BkPdfLoader component Should be render correctly 1`] = `
         data-cy="select-pdf"
       >
         
-          
+        
       
       </span>
     </label>
@@ -39,7 +39,7 @@ exports[`BkPdfLoader component Should be render correctly 1`] = `
       class="content"
     >
       
-      
+    
   
     </p>
   </button>
