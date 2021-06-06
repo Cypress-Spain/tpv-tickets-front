@@ -4,7 +4,7 @@ import messages from './locales';
 
 Vue.use(VueI18n);
 
-const DEFAULT_LANG = 'es';
+const DEFAULT_LANG = 'en';
 
 const i18n = new VueI18n({
   messages,
