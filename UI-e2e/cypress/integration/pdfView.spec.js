@@ -1,12 +1,14 @@
 /* eslint-disable no-undef */
 describe('PDF view', () => {
   beforeEach(() => {
-    cy.server();
-    cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
+    cy.intercept('POST', '/api/v1/login', { fixture: 'login.json' })
+      .as('loginRequest');
+    cy.intercept('GET', '/api/v1/tickets', { fixture: 'tickets.json' })
+      .as('getTicketsRequest');
     cy.visit('/');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
+    cy.wait(['@loginRequest', '@getTicketsRequest']);
     cy.get('[data-cy=UploaderSection-select]').click();
   });
 
@@ -32,7 +34,8 @@ describe('PDF view', () => {
   it('Should upload a pdf correctly', () => {
     const file = '../fixtures/file.json';
     const fileName = 'file.json';
-    cy.route('POST', '/api/v1/tickets', 'fixture:file').as('filePdf');
+    cy.intercept('POST', '/api/v1/tickets', { fixture: 'file.json' })
+      .as('filePdf');
     cy.fixture(file).then((fileContent) => {
       cy.get('input[name="file"]').upload({
         fileContent,
@@ -40,12 +43,10 @@ describe('PDF view', () => {
         mimeType: 'application/json',
       });
     });
-    cy.get('[data-cy=select-pdf]').should('not.be.visible');
     cy.get('[data-cy=file-name]').should('be.visible');
     cy.get('[data-cy=btn-pdf-loader]').click();
     cy.wait('@filePdf');
     cy.get('.notify .success').should('be.visible');
-    cy.get('[data-cy=file-name]').should('not.be.visible');
     cy.get('[data-cy=select-pdf]').should('be.visible');
   });
 });

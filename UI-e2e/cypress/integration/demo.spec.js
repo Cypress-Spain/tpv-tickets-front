@@ -42,6 +42,7 @@ describe('DCSL Talk demo examples', () => {
       cy.get('[data-cy=username]').type('test');
       cy.get('[data-cy=password]').type('test1234');
       cy.get('[data-cy=btn]').click();
+      // cy.wait(8000);
       cy.wait(['@loginRequest', '@getTicketsRequest'], { timeout: 10000 });
       cy.url().should('not.contain', '/login');
     });

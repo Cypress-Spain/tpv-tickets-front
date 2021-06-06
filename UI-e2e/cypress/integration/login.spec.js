@@ -1,7 +1,7 @@
 describe('Login view', () => {
   beforeEach(() => {
-    cy.server();
-    cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
+    cy.intercept('POST', '/api/v1/login', { fixture: 'login.json' })
+      .as('loginRequest');
     cy.visit('/');
   });
 
@@ -17,10 +17,11 @@ describe('Login view', () => {
   });
 
   it('It should log in by entering a valid username and password', () => {
-    cy.route('GET', '/api/v1/tickets', 'fixture:tickets').as('getTicketsRequest');
+    cy.intercept('GET', '/api/v1/tickets', { fixture: 'tickets.json' })
+      .as('getTicketsRequest');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
-    cy.url().should('be', '/');
+    cy.wait(['@loginRequest', '@getTicketsRequest']);
+    cy.url().should('not.contain', '/login');
   });
 });
