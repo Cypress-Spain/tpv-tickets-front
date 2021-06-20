@@ -10,13 +10,12 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:cypress": "cd UI-e2e && npm run cy:open",
-    "test:e2e": "cd UI-e2e && npm run cy:run",
+    "test:headless": "cd UI-e2e && npm run cy:run",
+    "test:record": "cd UI-e2e && npm run cy:record",
     "lint": "vue-cli-service lint",
     "start": "node server.js",
     "heroku-postbuild": "npm run build",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "@saeris/vue-spinners": "^1.0.8",
