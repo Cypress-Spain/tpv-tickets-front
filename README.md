@@ -1,6 +1,6 @@
 # tpv-tickets-front
 
-[![Known Vulnerabilities](https://snyk.io/test/github/BRIKEV/tpv-tickets-front/badge.svg?targetFile=package.json)](https://snyk.io/test/github/BRIKEV/tpv-tickets-front?targetFile=package.json)
+This example project only runs with NodeJS versions lower that 10.
 
 ## Project setup
 ```
@@ -31,8 +31,6 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Cypress tests
-
-[![Known Vulnerabilities](https://snyk.io/test/github/BRIKEV/tpv-tickets-front/badge.svg?targetFile=package.json)](https://snyk.io/test/github/BRIKEV/tpv-tickets-front?targetFile=package.json)
 
 Inside UI-e2e there is all the cypress e2e tests.
 

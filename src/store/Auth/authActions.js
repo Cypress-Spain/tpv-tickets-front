@@ -11,7 +11,7 @@ export default {
     return doLogin(payload)
       .then(({ data }) => {
         setItem('session_token', data.jwt);
-        router.push('/');
+        router.push('/').catch(() => {});
       })
       .catch(() => dispatch('sendError', { title: NOTIFICATION_LOGIN.error.title, text: NOTIFICATION_LOGIN.error.text }))
       .finally(() => commit('SET_LOADING', false));

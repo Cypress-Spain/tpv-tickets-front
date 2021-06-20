@@ -3,7 +3,8 @@ import storage from '@/persistence';
 
 const { getToken } = storage('cookieStorage');
 
-const TPV_APP_API_URL = 'https://taxi-tpv-tickets-api.herokuapp.com/api/v1';
+// const TPV_APP_API_URL = 'https://taxi-tpv-tickets-api.herokuapp.com/api/v1';
+const TPV_APP_API_URL = 'http://localhost:4000/api/v1';
 
 export const doLogin = ({ username, password }) => (
   axios.post(`${TPV_APP_API_URL}/login`, {

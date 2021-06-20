@@ -1,13 +1,13 @@
 describe('Main view', () => {
   beforeEach(() => {
-    cy.server();
-    cy.route('POST', '/api/v1/login', 'fixture:login').as('loginRequest');
-    cy.route('GET', '/api/v1/tickets', 'fixture:tickets').as('getTicketsRequest');
+    cy.intercept('POST', '/api/v1/login', { fixture: 'login.json' })
+      .as('loginRequest');
+    cy.intercept('GET', '/api/v1/tickets', { fixture: 'tickets.json' })
+      .as('getTicketsRequest');
     cy.visit('/');
     cy.typeLogin('test', 'test1234');
     cy.get('[data-cy=btn]').click();
-    cy.wait('@loginRequest');
-    cy.wait('@getTicketsRequest');
+    cy.wait(['@loginRequest', '@getTicketsRequest']);
   });
 
   it('Main view should content the navbar', () => {
@@ -25,8 +25,8 @@ describe('Main view', () => {
     cy.get('.tickets-container .container .header').first().click({ force: true });
     cy.get('.content > table thead tr').children().should('have.length', TOTAL_COLUMNS);
     cy.get('table > thead > tr').within(() => {
-      cy.get('th').eq(0).contains('Fecha');
-      cy.get('th').eq(1).contains('Precio');
+      cy.get('th').eq(0).contains('Date');
+      cy.get('th').eq(1).contains('Price');
     });
   });
 
@@ -49,12 +49,10 @@ describe('Main view', () => {
   });
 
   it('Should register a ticket and update the validation', () => {
-    cy.route({
-      method: 'POST',
-      url: '/api/v1/tickets/register',
-      response: { success: true },
-    }).as('regsterTicket');
-    cy.route('GET', '/api/v1/tickets', 'fixture:ticketsAfterRegister').as('getTicketsRequest');
+    cy.intercept('POST', '/api/v1/tickets/register', { body: { success: true } })
+      .as('regsterTicket');
+    cy.intercept('GET', '/api/v1/tickets', { fixture: 'ticketsAfterRegister.json' })
+      .as('getTicketsRequest');
     cy.get('[data-cy=main-date-input]').type('08-08-2020');
     cy.get('[data-cy=main-price-input]').type('2,12{enter}');
     cy.wait(['@regsterTicket', '@getTicketsRequest']);
@@ -62,7 +60,8 @@ describe('Main view', () => {
 
   it('Should show a modal and delete a ticket', () => {
     const TOTAL_ROWS = 4;
-    cy.route('DELETE', '/api/v1/tickets/30', 'fixture:deletedTicket').as('deletedTicket');
+    cy.intercept('DELETE', '/api/v1/tickets/30', { fixture: 'deletedTicket.json' })
+      .as('deletedTicket');
     cy.contains('Tickets sin pdf').click({ force: true });
     cy.get('table > tbody > tr').should('have.length', TOTAL_ROWS);
     cy.get('[data-cy=deleteBtn-30]').click();
@@ -74,7 +73,8 @@ describe('Main view', () => {
   });
 
   it('Should show a modal and delete a ticket badly', () => {
-    cy.route('DELETE', '/api/v1/tickets/1', 'fixture:deletedTicket').as('deletedTicket');
+    cy.intercept('DELETE', '/api/v1/tickets/1', { fixture: 'deletedTicket.json' })
+      .as('deletedTicket');
     cy.contains('Tickets sin pdf').click({ force: true });
     cy.get('[data-cy=deleteBtn-31]').click();
     cy.get('.deleteBtn').click();
@@ -84,7 +84,8 @@ describe('Main view', () => {
   it('Should upload a photo correctly', () => {
     const file = '../fixtures/file.json';
     const fileName = 'file.json';
-    cy.route('POST', '/api/v1/ticket/ocr', 'fixture:uploadedPhoto').as('uploadedPhoto');
+    cy.intercept('POST', '/api/v1/ticket/ocr', { fixture: 'uploadedPhoto.json' })
+      .as('uploadedPhoto');
     cy.fixture(file).then((fileContent) => {
       cy.get('.file').upload({
         fileContent,
